@@ -1,7 +1,8 @@
 """Dead Sun - Curses-based terminal rendering."""
 
 import curses
-from data import MODULES, REFINE_RECIPES, SCREENS, EMPTY, FLOOR, HULL_COST, CLR_TITLE, CLR_GOOD, CLR_WARN, CLR_BAD, CLR_HIGHLIGHT, CLR_DIM, CLR_MODULE, CLR_CURSOR, CLR_BORDER
+from data.config import CLR_TITLE, CLR_GOOD, CLR_WARN, CLR_BAD, CLR_HIGHLIGHT, CLR_DIM, CLR_MODULE, CLR_CURSOR, CLR_BORDER, EMPTY, FLOOR, SCREENS, HULL_COST
+from data.modules import MODULES, REFINE_RECIPES
 
 HEADER_H = 2
 FOOTER_H = 4
@@ -42,6 +43,7 @@ def render_header(win, game, max_w):
     safe_addstr(win, 0, 16, f"Day {game.day}", curses.color_pair(CLR_TITLE))
     loc = game.current_location
     safe_addstr(win, 0, 26, f"📍 {loc.name}", curses.color_pair(CLR_TITLE))
+    safe_addstr(win, 0, 50, f"💳 {game.credits}cr", curses.color_pair(CLR_TITLE))
 
     resources = [
         ("metal", "🔩"),

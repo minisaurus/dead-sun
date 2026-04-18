@@ -1,7 +1,6 @@
-"""Dead Sun - Game loop, input handling, and core logic."""
-
 import curses
-from data import MODULES, SCREENS, REFINE_RECIPES, HULL_COST, EMPTY, FLOOR
+from data import MODULES, SCREENS, REFINE_RECIPES, EMPTY, FLOOR
+from data.config import HULL_COST, CLR_TITLE, CLR_GOOD, CLR_WARN, CLR_BAD, CLR_HIGHLIGHT, CLR_DIM, CLR_MODULE, CLR_CURSOR, CLR_BORDER
 from render import init_colors, render
 
 
@@ -195,7 +194,7 @@ def handle_input(game, key):
 
 
 def run_game(stdscr):
-    from world import GameState
+    from world.game_state import GameState
 
     curses.curs_set(0)
     curses.noecho()
