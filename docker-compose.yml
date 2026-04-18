@@ -1,0 +1,8 @@
+services:
+  dead-sun:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Dead-Sun
+    restart: unless-stopped
+    network_mode: host
