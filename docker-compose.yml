@@ -5,4 +5,11 @@ services:
       dockerfile: Dockerfile
     container_name: Dead-Sun
     restart: unless-stopped
-    network_mode: host
+    ports:
+      - "7681:7681"
+    environment:
+      - SCREEN_WIDTH=1024
+      - SCREEN_HEIGHT=768
+      - SDL_VIDEODRIVER=dummy
+      - SDL_AUDIODRIVER=dummy
+    command: ["sh", "-c", "Xvfb :0 -screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x24 & sleep 2 && python3 dead_sun.py"]
